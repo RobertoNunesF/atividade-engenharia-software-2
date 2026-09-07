@@ -23,13 +23,19 @@ while(true){
         case 1:
             acelerar(carro);
             break;
-    
+
+        case 5:
+            imprimirDadosVeiculo(carro);
+            break;
+
         default:
             break;
     }
 }
 
-console.table(carro);
+function imprimirDadosVeiculo(veiculo: Veiculo): void{
+    console.table(veiculo);
+}
 
 function acelerar(veiculo: Veiculo): void{
     if(veiculo.marchaAtual != 0){
