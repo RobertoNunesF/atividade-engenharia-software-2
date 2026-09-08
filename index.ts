@@ -43,6 +43,24 @@ function acelerar(veiculo: Veiculo): void{
     console.log(veiculo.velocidade);
 }}
 
+const LIMITES_MARCHA = [0, 20, 50, 70, 90];
+
+function subirMarcha(veiculo: Veiculo): void{
+    if(veiculo.marchaAtual === 0){
+        veiculo.marchaAtual = 1;
+        console.log("Trocando para a marcha 1");
+        return;
+    }
+
+    const proximaMarcha = veiculo.marchaAtual + 1;
+    const limiteProximaMarcha = LIMITES_MARCHA[proximaMarcha - 1];
+
+    if(proximaMarcha <= veiculo.numeroMarchas && veiculo.velocidade >= limiteProximaMarcha){
+        veiculo.marchaAtual = proximaMarcha;
+        console.log(`Trocando para a marcha ${proximaMarcha}`);
+    }
+}
+
 function criaVeiculo(): Veiculo{
     const veiculo: Veiculo = new Veiculo();
     veiculo.marca = teclado('Marca: ');
