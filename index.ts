@@ -23,19 +23,43 @@ while(true){
         case 1:
             acelerar(carro);
             break;
-    
+
+        case 5:
+            imprimirDadosVeiculo(carro);
+            break;
+
         default:
             break;
     }
 }
 
-console.table(carro);
+function imprimirDadosVeiculo(veiculo: Veiculo): void{
+    console.table(veiculo);
+}
 
 function acelerar(veiculo: Veiculo): void{
     if(veiculo.marchaAtual != 0){
     veiculo.velocidade += veiculo.potencia*0.1;
     console.log(veiculo.velocidade);
 }}
+
+const LIMITES_MARCHA = [0, 20, 50, 70, 90];
+
+function subirMarcha(veiculo: Veiculo): void{
+    if(veiculo.marchaAtual === 0){
+        veiculo.marchaAtual = 1;
+        console.log("Trocando para a marcha 1");
+        return;
+    }
+
+    const proximaMarcha = veiculo.marchaAtual + 1;
+    const limiteProximaMarcha = LIMITES_MARCHA[proximaMarcha - 1];
+
+    if(proximaMarcha <= veiculo.numeroMarchas && veiculo.velocidade >= limiteProximaMarcha){
+        veiculo.marchaAtual = proximaMarcha;
+        console.log(`Trocando para a marcha ${proximaMarcha}`);
+    }
+}
 
 function criaVeiculo(): Veiculo{
     const veiculo: Veiculo = new Veiculo();
