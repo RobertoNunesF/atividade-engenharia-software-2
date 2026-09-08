@@ -1,7 +1,11 @@
 import { Veiculo } from "./Veiculo";
 import prompt from "prompt-sync";
 
+//alteração do hope :)
+
+
 const teclado = prompt();
+const hipopotamo = 1
 
 console.log('Criação de veículo');
 const carro: Veiculo = criaVeiculo();
